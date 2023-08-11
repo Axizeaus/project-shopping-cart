@@ -1,12 +1,21 @@
 import { Link, Outlet } from "react-router-dom";
-
 const Header = () => {
   return (
     <>
-      <div>This is Header</div>
-      <Link to="/home">home</Link>
-      <Link to="/products">products</Link>
-      <Link to="/cart">cart</Link>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/home">home</Link>
+          </li>
+          <li>
+            <Link to="/products">products</Link>
+          </li>
+          <li>
+            <Link to="/cart">cart</Link>
+          </li>
+        </ul>
+      </nav>
+
       <Outlet />
     </>
   );
