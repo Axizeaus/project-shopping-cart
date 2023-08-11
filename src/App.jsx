@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
+import Header from "./components/Header";
 
 const App = () => {
-  return <div>This is App</div>;
+  return (
+    <>
+      <Header />
+      <div>This is App</div>
+    </>
+  );
 };
 
 export default App;
