@@ -7,7 +7,6 @@ export default function RootLayout() {
         <nav>
           <h1>Shoping Cart</h1>
           <NavLink to="/">home</NavLink>
-          {/* <NavLink to="about">about</NavLink> */}
           <NavLink to="products">products</NavLink>
           <NavLink to="cart">cart</NavLink>
         </nav>
