@@ -1,29 +1,23 @@
 import { useEffect, createContext, useState } from "react";
 import RootLayout from "./layouts/RootLayout";
-
-// const ShopContext = createContext({
-//   products: [],
-//   cartItems: [],
-// });
+import productContext from "./Context/ProductContext";
 
 const App = () => {
-  // const [cartItems, setCartItems] = useState([]);
-  // const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  const [products, setProducts] = useState([]);
 
   // get products data from fakestoreapi
-  // useEffect(() => {
-  //   fetch("https://fakestoreapi.com/products")
-  //     .then((res) => res.json())
-  //     .then((json) => setProducts(json));
-  // }, []);
-
-  // console.log(products);
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => setProducts(json));
+  }, []);
 
   return (
     <>
-      {/* <ShopContext.Provider value={{ products, cartItems }}> */}
-      <RootLayout />
-      {/* </ShopContext.Provider> */}
+      <productContext.Provider value={{ products, cartItems }}>
+        <RootLayout />
+      </productContext.Provider>
     </>
   );
 };
