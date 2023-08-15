@@ -13,6 +13,23 @@ const App = () => {
       .then((json) => setProducts(json));
   }, []);
 
+  // const addToCart = (id) => {
+  //   setCartItems((prevCartItems) => {
+  //     const itemIndex = prevCartItems.findIndex((item) => item.id === id);
+
+  //     if (itemIndex !== -1) {
+  //       const updatedCartItems = [...prevCartItems];
+  //       updatedCartItems[itemIndex].count += 1;
+  //       console.log(updatedCartItems);
+  //       return updatedCartItems;
+  //     } else {
+  //       const newItem = { id, count: 1 };
+  //       console.log([...prevCartItems, newItem]);
+  //       return [...prevCartItems, newItem];
+  //     }
+  //   });
+  // };
+
   return (
     <>
       <productContext.Provider value={{ products, cartItems }}>
