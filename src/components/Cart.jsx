@@ -1,18 +1,29 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import productContext from "../Context/ProductContext";
 
 const Cart = () => {
-  const { cartItems } = useContext(productContext);
+  const { cartItems, removeFromCart } = useContext(productContext);
+  console.log(cartItems);
+
+  const handleDelete = (productId) => {
+    removeFromCart(productId);
+  };
 
   return (
     <div>
       <h2>Cart Items</h2>
       <ul>
         {cartItems.map((item) => (
-          <li key={item.id}>
-            <strong>Product ID:</strong> {item.id},<hr />
-            <strong>Title:</strong> {item.title},<hr />
-            <strong>Count:</strong> {item.count}
+          <li key={item.product.id}>
+            <strong>Product ID:</strong> {item.product.id} <br />
+            <strong>Title:</strong> {item.product.title} <br />
+            <strong>Count:</strong> {item.quantity} <br />
+            <button onClick={() => handleDelete(item.product.id)}>
+              Delete
+            </button>
+            <Link to={`/products/${item.product.id}`}>Update</Link>
+            <hr />
           </li>
         ))}
       </ul>

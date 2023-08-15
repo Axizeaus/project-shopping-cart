@@ -32,7 +32,7 @@ function ProductDetail() {
   };
 
   const handleAddToCart = () => {
-    addToCart(product, quantity);
+    addToCart(product.id, quantity);
   };
 
   return (
@@ -45,7 +45,6 @@ function ProductDetail() {
         <p>
           Rating: {product.rating.rate} ({product.rating.count} reviews)
         </p>
-        {/* You can add your additional details here */}
       </div>
 
       <div>

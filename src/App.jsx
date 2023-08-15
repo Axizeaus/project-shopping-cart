@@ -13,26 +13,40 @@ const App = () => {
       .then((json) => setProducts(json));
   }, []);
 
-  // const addToCart = (id) => {
-  //   setCartItems((prevCartItems) => {
-  //     const itemIndex = prevCartItems.findIndex((item) => item.id === id);
+  const addToCart = (productId, quantity) => {
+    setCartItems((prevCartItems) => {
+      const existingItemIndex = prevCartItems.findIndex(
+        (item) => item.product.id === productId
+      );
 
-  //     if (itemIndex !== -1) {
-  //       const updatedCartItems = [...prevCartItems];
-  //       updatedCartItems[itemIndex].count += 1;
-  //       console.log(updatedCartItems);
-  //       return updatedCartItems;
-  //     } else {
-  //       const newItem = { id, count: 1 };
-  //       console.log([...prevCartItems, newItem]);
-  //       return [...prevCartItems, newItem];
-  //     }
-  //   });
-  // };
+      if (existingItemIndex !== -1) {
+        const updatedCartItems = [...prevCartItems];
+        updatedCartItems[existingItemIndex].quantity += quantity;
+        return updatedCartItems;
+      } else {
+        const productToAdd = products.find(
+          (product) => product.id === productId
+        );
+        if (productToAdd) {
+          const newItem = { product: productToAdd, quantity };
+          return [...prevCartItems, newItem];
+        }
+        return prevCartItems;
+      }
+    });
+  };
+
+  const removeFromCart = (productId) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((item) => item.product.id !== productId)
+    );
+  };
 
   return (
     <>
-      <productContext.Provider value={{ products, cartItems }}>
+      <productContext.Provider
+        value={{ products, cartItems, addToCart, removeFromCart }}
+      >
         <RootLayout />
       </productContext.Provider>
     </>
