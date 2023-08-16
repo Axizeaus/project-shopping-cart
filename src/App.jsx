@@ -1,6 +1,18 @@
 import { useEffect, createContext, useState } from "react";
 import RootLayout from "./layouts/RootLayout";
 import productContext from "./Context/ProductContext";
+import Container from "./components/styles/RootLayout.styled";
+import { ThemeProvider } from "styled-components";
+
+const theme = {
+  colors: {
+    primary: "#2c3e50", // Dark Blue
+    secondary: "#e74c3c", // Red
+    accent: "#f39c12", // Orange
+    background: "#ecf0f1", // Light Gray
+    text: "#34495e", // Dark Gray
+  },
+};
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -47,7 +59,11 @@ const App = () => {
       <productContext.Provider
         value={{ products, cartItems, addToCart, removeFromCart }}
       >
-        <RootLayout />
+        <ThemeProvider theme={theme}>
+          <Container>
+            <RootLayout />
+          </Container>
+        </ThemeProvider>
       </productContext.Provider>
     </>
   );

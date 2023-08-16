@@ -1,11 +1,14 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
+import {
+  LayoutContainer,
+  Heading,
+} from "../components/styles/ProductLayout.styled";
 
 export default function ProductLayout() {
   return (
-    <div>
-      <h1>Product layout</h1>
+    <LayoutContainer>
+      <Heading>Product Layout</Heading>
       <Outlet />
-    </div>
+    </LayoutContainer>
   );
 }
